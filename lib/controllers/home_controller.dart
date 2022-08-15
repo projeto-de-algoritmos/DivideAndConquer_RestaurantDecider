@@ -19,6 +19,31 @@ class HomeController {
     definedOpinions[name.text] = idOpinions;
     restaurants.opinions = restaurants.restaurants;
     name.text = "";
+    updatePoints(idOpinions);
     print(definedOpinions);
+    print(score);
+  }
+
+  void updatePoints(List<int> idOpinions) {
+    for (int index = 0; index < 5; index++) {
+      switch (index) {
+        case 0:
+          score[idOpinions[index]] += 25;
+          break;
+        case 1:
+          score[idOpinions[index]] += 18;
+          break;
+        case 2:
+          score[idOpinions[index]] += 15;
+          break;
+        case 3:
+          score[idOpinions[index]] += 10;
+          break;
+        case 4:
+          score[idOpinions[index]] += 8;
+          break;
+        default:
+      }
+    }
   }
 }

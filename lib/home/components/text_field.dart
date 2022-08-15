@@ -38,6 +38,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
             validator: (value) {
               if (value == "") return "Adicione o seu nome";
+              if (widget.controller.definedOpinions.containsKey(value))
+                return "Pessoa já cadastrada!";
               return null;
             }),
       ),
