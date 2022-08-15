@@ -1,5 +1,5 @@
 import 'package:decider_app/controllers/home_controller.dart';
-import 'package:decider_app/home/home.dart';
+import 'package:decider_app/result/result.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtons extends StatefulWidget {
@@ -54,7 +54,31 @@ class _CustomButtonsState extends State<CustomButtons> {
           ),
         ),
         MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            if (widget.formKey.currentState!.validate()) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    'Opinião processada!',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  backgroundColor: Colors.greenAccent,
+                ),
+              );
+              widget.controller.addOpinion();
+              widget.controller.buttonClicked.value =
+                  !widget.controller.buttonClicked.value;
+            }
+            widget.controller.finish();
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: ((context) => ResultPage(
+                      restaurants: widget.controller.restaurants,
+                    )),
+              ),
+            );
+          },
           child: Container(
             width: size.width * 0.4,
             height: size.height * 0.07,

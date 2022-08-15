@@ -8,8 +8,6 @@ class HomeController {
 
   Map<String, List> definedOpinions = {};
 
-  List<int> score = [0, 0, 0, 0, 0];
-
   void addOpinion() {
     List<int> idOpinions = [];
 
@@ -17,33 +15,41 @@ class HomeController {
       idOpinions.add(element["id"]);
     }
     definedOpinions[name.text] = idOpinions;
-    restaurants.opinions = restaurants.restaurants;
+    restaurants.opinions = [];
+    restaurants.opinions.addAll(restaurants.restaurants);
     name.text = "";
     updatePoints(idOpinions);
     print(definedOpinions);
-    print(score);
   }
 
   void updatePoints(List<int> idOpinions) {
     for (int index = 0; index < 5; index++) {
       switch (index) {
         case 0:
-          score[idOpinions[index]] += 25;
+          restaurants.restaurants[idOpinions[index]]["score"] += 25;
           break;
         case 1:
-          score[idOpinions[index]] += 18;
+          restaurants.restaurants[idOpinions[index]]["score"] += 18;
           break;
         case 2:
-          score[idOpinions[index]] += 15;
+          restaurants.restaurants[idOpinions[index]]["score"] += 15;
           break;
         case 3:
-          score[idOpinions[index]] += 10;
+          restaurants.restaurants[idOpinions[index]]["score"] += 10;
           break;
         case 4:
-          score[idOpinions[index]] += 8;
+          restaurants.restaurants[idOpinions[index]]["score"] += 8;
           break;
         default:
       }
     }
+    print(restaurants.restaurants);
+  }
+
+  void finish() {
+    List<int> indexes = [0, 1, 2, 3, 4];
+
+    restaurants.restaurants.sort((a, b) => a["score"].compareTo(b["score"]));
+    print(restaurants.restaurants.reversed);
   }
 }
