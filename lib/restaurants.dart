@@ -14,6 +14,4 @@ class Restaurants {
     {"id": 4, "name": "Koni", "image": "assets/koni.png"},
     {"id": 5, "name": "Coco Bambu", "image": "assets/coco.png"},
   ];
-
-  List<int> score = [0, 0, 0, 0, 0];
 }

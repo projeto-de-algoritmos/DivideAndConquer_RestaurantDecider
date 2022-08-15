@@ -2,6 +2,7 @@ import 'package:decider_app/home/components/app_bar.dart';
 import 'package:decider_app/home/components/buttons.dart';
 import 'package:decider_app/home/components/reorder_list.dart';
 import 'package:decider_app/home/components/text_field.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../controllers/home_controller.dart';
@@ -28,24 +29,30 @@ class _HomeListState extends State<HomeList> {
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              CustomTextFormField(
-                formKey: _formKey,
-                controller: controller,
-              ),
-              const Text(
-                "Ordene as suas preferências!",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              const ReorderAppList(),
-              CustomButtons(
-                formKey: _formKey,
-                controller: controller,
-              )
-            ],
-          ),
+        child: ValueListenableBuilder(
+          valueListenable: controller.buttonClicked,
+          builder: ((context, value, child) => SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CustomTextFormField(
+                      formKey: _formKey,
+                      controller: controller,
+                    ),
+                    const Text(
+                      "Ordene as suas preferências!",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    ReorderAppList(
+                      controller: controller,
+                    ),
+                    CustomButtons(
+                      formKey: _formKey,
+                      controller: controller,
+                    )
+                  ],
+                ),
+              )),
         ),
       ),
     );

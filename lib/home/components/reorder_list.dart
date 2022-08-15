@@ -1,16 +1,16 @@
+import 'package:decider_app/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 
-import '../../variables.dart';
-
 class ReorderAppList extends StatefulWidget {
-  const ReorderAppList({Key? key}) : super(key: key);
+  const ReorderAppList({Key? key, required this.controller}) : super(key: key);
+
+  final HomeController controller;
 
   @override
   State<ReorderAppList> createState() => _ReorderAppListState();
 }
 
 class _ReorderAppListState extends State<ReorderAppList> {
-  Restaurants restaurants = Restaurants();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,9 +19,12 @@ class _ReorderAppListState extends State<ReorderAppList> {
       margin: const EdgeInsets.only(top: 15),
       child: ReorderableListView(
         children: [
-          for (int index = 0; index < restaurants.restaurants.length; index++)
+          for (int index = 0;
+              index < widget.controller.restaurants.opinions.length;
+              index++)
             Container(
-              key: Key(restaurants.restaurants[index]["id"].toString()),
+              key: Key(widget.controller.restaurants.opinions[index]["id"]
+                  .toString()),
               decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.black.withOpacity(0.15),
@@ -43,11 +46,12 @@ class _ReorderAppListState extends State<ReorderAppList> {
                     Row(
                       children: [
                         CircleAvatar(
-                          foregroundImage: AssetImage(
-                              restaurants.restaurants[index]["image"]),
+                          foregroundImage: AssetImage(widget
+                              .controller.restaurants.opinions[index]["image"]),
                         ),
                         const SizedBox(width: 10),
-                        Text(restaurants.restaurants[index]["name"]),
+                        Text(widget.controller.restaurants.opinions[index]
+                            ["name"]),
                       ],
                     ),
                     SizedBox(
@@ -69,8 +73,9 @@ class _ReorderAppListState extends State<ReorderAppList> {
             if (oldIndex < newIndex) {
               newIndex -= 1;
             }
-            final item = restaurants.restaurants.removeAt(oldIndex);
-            restaurants.restaurants.insert(newIndex, item);
+            final item =
+                widget.controller.restaurants.opinions.removeAt(oldIndex);
+            widget.controller.restaurants.opinions.insert(newIndex, item);
           });
         },
       ),

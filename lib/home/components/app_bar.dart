@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
       backgroundColor: Colors.purpleAccent,
       elevation: 10.0,
       title: const Text("DECIDER!"),
+      automaticallyImplyLeading: false,
     );
   }
 

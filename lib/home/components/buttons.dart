@@ -1,4 +1,5 @@
 import 'package:decider_app/controllers/home_controller.dart';
+import 'package:decider_app/home/home.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtons extends StatefulWidget {
@@ -31,6 +32,11 @@ class _CustomButtonsState extends State<CustomButtons> {
                   backgroundColor: Colors.greenAccent,
                 ),
               );
+              widget.controller.addOpinion();
+              widget.controller.buttonClicked.value =
+                  !widget.controller.buttonClicked.value;
+              // Navigator.pushReplacement(context,
+              //     MaterialPageRoute(builder: ((context) => const HomeList())));
             }
           },
           child: Container(
