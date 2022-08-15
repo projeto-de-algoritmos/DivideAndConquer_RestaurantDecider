@@ -1,4 +1,4 @@
-import 'package:decider_app/home.dart';
+import 'package:decider_app/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
