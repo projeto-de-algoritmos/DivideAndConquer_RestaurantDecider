@@ -35,25 +35,27 @@ class ResultPage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Pessoa com maior inversão:",
+                    "Pessoa com mais inversão:",
                     textAlign: TextAlign.start,
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 30),
+                padding: EdgeInsets.only(left: 30, top: 20),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Pessoa com menor inversão:",
+                    "Pessoa com menos inversão:",
                     textAlign: TextAlign.start,
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 80),
+                  margin: EdgeInsets.only(top: 60),
                   child: MaterialButton(
                     onPressed: () {
                       Navigator.pushReplacement(
