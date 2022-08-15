@@ -1,9 +1,13 @@
+import 'package:decider_app/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtons extends StatefulWidget {
-  const CustomButtons({Key? key, required this.formKey}) : super(key: key);
+  const CustomButtons(
+      {Key? key, required this.formKey, required this.controller})
+      : super(key: key);
 
   final GlobalKey<FormState> formKey;
+  final HomeController controller;
 
   @override
   State<CustomButtons> createState() => _CustomButtonsState();

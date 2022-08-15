@@ -2,8 +2,9 @@ import 'package:decider_app/home/components/app_bar.dart';
 import 'package:decider_app/home/components/buttons.dart';
 import 'package:decider_app/home/components/reorder_list.dart';
 import 'package:decider_app/home/components/text_field.dart';
-import 'package:decider_app/variables.dart';
 import 'package:flutter/material.dart';
+
+import '../controllers/home_controller.dart';
 
 class HomeList extends StatefulWidget {
   const HomeList({Key? key}) : super(key: key);
@@ -13,7 +14,14 @@ class HomeList extends StatefulWidget {
 }
 
 class _HomeListState extends State<HomeList> {
+  HomeController controller = HomeController();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    controller.name.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +31,19 @@ class _HomeListState extends State<HomeList> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CustomTextFormField(formKey: _formKey),
+              CustomTextFormField(
+                formKey: _formKey,
+                controller: controller,
+              ),
               const Text(
                 "Ordene as suas preferências!",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               const ReorderAppList(),
-              CustomButtons(formKey: _formKey)
+              CustomButtons(
+                formKey: _formKey,
+                controller: controller,
+              )
             ],
           ),
         ),

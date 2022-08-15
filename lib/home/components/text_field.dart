@@ -1,10 +1,13 @@
+import 'package:decider_app/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField({Key? key, required this.formKey})
+  const CustomTextFormField(
+      {Key? key, required this.formKey, required this.controller})
       : super(key: key);
 
   final GlobalKey<FormState> formKey;
+  final HomeController controller;
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
@@ -17,6 +20,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       child: Form(
         key: widget.formKey,
         child: TextFormField(
+            controller: widget.controller.name,
             decoration: const InputDecoration(
               labelText: "Digite o seu nome!",
               labelStyle: TextStyle(color: Colors.black),
