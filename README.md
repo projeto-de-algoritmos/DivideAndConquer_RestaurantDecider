@@ -1,4 +1,4 @@
-# NomedoProjeto
+# RestaurantDecider
 
 **Número da Lista**: 4<br>
 **Conteúdo da Disciplina**: Divide And Conquer<br>
