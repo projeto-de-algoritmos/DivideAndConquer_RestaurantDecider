@@ -10,12 +10,12 @@
 | 19/0020903   |  Vitor Magalhães Lamego |
 
 ## Sobre 
-O objetivo do projeto é auxiliar ho momento de tomada de decisão para escolher um restaurante através da utilização do algoritmo de contagem de inversões, nele é selecionado as preferencias de acordo com uma pontuação e então realizada a contagem para saber quem mais concordou com a votação e quem mais discordou.
+O objetivo do projeto é auxiliar no momento de tomada de decisão para escolher um restaurante através da utilização do algoritmo de contagem de inversões, nele é selecionado as preferências de acordo com uma pontuação e então realizada a contagem para saber quem mais concordou com a votação e quem mais discordou.
 
 ## Screenshots
-<img src="/prints/print1.jpg" alt="drawing" width="200"/>
-<img src="/prints/print2.jpg" alt="drawing" width="200"/>
-<img src="/prints/print3.jpg" alt="drawing" width="200"/>
+<img src="/prints/print1.png" alt="drawing" width="200"/>
+<img src="/prints/print2.png" alt="drawing" width="200"/>
+<img src="/prints/print3.png" alt="drawing" width="200"/>
 
 ## Instalação 
 **Linguagem**: Dart<br>
