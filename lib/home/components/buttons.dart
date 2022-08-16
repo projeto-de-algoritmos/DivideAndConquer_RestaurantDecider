@@ -75,6 +75,7 @@ class _CustomButtonsState extends State<CustomButtons> {
               MaterialPageRoute(
                 builder: ((context) => ResultPage(
                       restaurants: widget.controller.restaurants,
+                      definedOpinions: widget.controller.definedOpinions,
                     )),
               ),
             );

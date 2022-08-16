@@ -6,7 +6,7 @@ class HomeController {
   Restaurants restaurants = Restaurants();
   ValueNotifier<bool> buttonClicked = ValueNotifier(false);
 
-  Map<String, List> definedOpinions = {};
+  Map<String, List<int>> definedOpinions = {};
 
   void addOpinion() {
     List<int> idOpinions = [];
@@ -19,7 +19,6 @@ class HomeController {
     restaurants.opinions.addAll(restaurants.restaurants);
     name.text = "";
     updatePoints(idOpinions);
-    print(definedOpinions);
   }
 
   void updatePoints(List<int> idOpinions) {
@@ -43,13 +42,9 @@ class HomeController {
         default:
       }
     }
-    print(restaurants.restaurants);
   }
 
   void finish() {
-    List<int> indexes = [0, 1, 2, 3, 4];
-
     restaurants.restaurants.sort((a, b) => a["score"].compareTo(b["score"]));
-    print(restaurants.restaurants.reversed);
   }
 }

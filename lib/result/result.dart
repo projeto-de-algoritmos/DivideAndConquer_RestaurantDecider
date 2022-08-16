@@ -7,13 +7,19 @@ import 'package:decider_app/restaurants.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
-  ResultPage({Key? key, required this.restaurants}) : super(key: key);
+  ResultPage(
+      {Key? key, required this.restaurants, required this.definedOpinions})
+      : super(key: key);
 
   final Restaurants restaurants;
   final ResultController controller = ResultController();
+  final Map<String, List<int>> definedOpinions;
+
   @override
   Widget build(BuildContext context) {
     List<Widget> listWidget = controller.finishResult(restaurants);
+    List<String> names =
+        controller.compareOpinions(restaurants, definedOpinions);
 
     return Scaffold(
       appBar: const CustomAppBar(),
@@ -35,7 +41,7 @@ class ResultPage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Pessoa com mais inversão:",
+                    "Pessoa com mais inversão: ${names[0]}",
                     textAlign: TextAlign.start,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -46,7 +52,7 @@ class ResultPage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Pessoa com menos inversão:",
+                    "Pessoa com menos inversão: ${names[1]}",
                     textAlign: TextAlign.start,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
